@@ -1,0 +1,6 @@
+framework module Pods_FastSettingDemo {
+  umbrella header "Pods-FastSettingDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
