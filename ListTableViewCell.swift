@@ -43,6 +43,12 @@ class ListTableViewCell : UITableViewCell {
             make.height.equalTo(SEPARATOR_HEIGHT)
         })
         
+        
+        self.KVOController.observe(MJColor.sharedInstance, keyPath: "style", options: [.Initial,.New]) {[weak self] (nav, color, change) -> Void in
+            self?.backgroundColor = MJColor.colors.MJ_cellBackgroundColor
+            self?.selectedBackgroundView!.backgroundColor = MJColor.colors.MJ_backgroundColor
+            self?.separator!.image = createImageWithColor( MJColor.colors.MJ_SeparatorColor )
+        }
     }
    
     func bind(content:String) {

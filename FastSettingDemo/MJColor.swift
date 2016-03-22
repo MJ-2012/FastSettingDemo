@@ -12,7 +12,7 @@ func colorWithRGB(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor {
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 255)
 }
 
-func colorWithRGBA(r:CGFloat , g:CGFloat , b:CGFloat , a:CGFloat) -> UIColor {
+func colorWithRGB(r:CGFloat , g:CGFloat , b:CGFloat , a:CGFloat) -> UIColor {
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a/255.0)
 }
 
@@ -36,6 +36,7 @@ func createImageWithColor(color:UIColor , size:CGSize)  -> UIImage {
 protocol MJColorProtocol {
     var MJ_backgroundColor:UIColor { get }
     var MJ_navigationBarTintColor : UIColor { get }
+    var MJ_TopicListTitleColor : UIColor { get }
     
     var MJ_cellBackgroundColor : UIColor { get }
     var MJ_cellTextLableColor : UIColor { get }
@@ -43,6 +44,12 @@ protocol MJColorProtocol {
     
     var MJ_buttonBackgroundColor : UIColor { get }
     var MJ_SeparatorColor : UIColor { get }
+    
+    var MJ_NodeBackgroundColor : UIColor {get}
+    var MJ_LeftNodeBackgroundColor : UIColor {get}
+    var MJ_LeftNodeTintColor : UIColor {get}
+    
+    var MJ_TopUserNameColor : UIColor {get}
 }
 
 
@@ -54,18 +61,20 @@ class MJDefaultColor : NSObject , MJColorProtocol  {
     
     var MJ_backgroundColor:UIColor { get { return colorWithRGB(242, g: 243, b: 245)} }
     var MJ_navigationBarTintColor : UIColor { get { return colorWithRGB(155, g: 155, b: 155)}}
+    var MJ_TopicListTitleColor : UIColor { get { return colorWithRGB(15, g: 15, b: 15)}}
     
     var MJ_cellBackgroundColor : UIColor { get { return colorWithRGB(255, g: 255, b: 255)}}
     var MJ_cellTextLableColor : UIColor { get { return colorWithRGB(15, g: 15, b: 15)}}
     var MJ_cellTextDetailLabelColr : UIColor { get { return colorWithRGB(53, g: 53, b: 53)}}
     
     var MJ_buttonBackgroundColor : UIColor { get { return colorWithRGB(201, g: 201, b: 201)}}
+    var MJ_SeparatorColor : UIColor {get { return colorWithRGB(190, g: 190, b: 190)}}
+
+    var MJ_NodeBackgroundColor : UIColor {get {return colorWithRGB(242, g: 242, b: 242)} }
+    var MJ_LeftNodeBackgroundColor : UIColor {get { return colorWithRGB(255, g: 255, b: 255, a: 76)}}
+    var MJ_LeftNodeTintColor : UIColor { get {  return colorWithRGB(0, g: 0, b: 0, a: 140)}}
     
-    var MJ_SeparatorColor : UIColor {
-        get {
-            return colorWithRGB(190, g: 190, b: 190)
-        }
-    }
+    var MJ_TopUserNameColor : UIColor { get {  return colorWithRGB(53, g: 53, b: 53)}}
 }
 
 
@@ -73,19 +82,21 @@ class MJDarkColor : NSObject , MJColorProtocol {
     static let sharedInstance = MJDarkColor()
     
     var MJ_backgroundColor:UIColor { get { return colorWithRGB(0, g: 0, b: 0)} }
-    var MJ_navigationBarTintColor : UIColor { get { return colorWithRGB(100, g: 100, b: 100)}}
-    
+    var MJ_navigationBarTintColor : UIColor { get { return colorWithRGB(165, g: 165, b: 165)}}
+    var MJ_TopicListTitleColor : UIColor { get { return colorWithRGB(145, g: 145, b: 145)}}
+ 
     var MJ_cellBackgroundColor : UIColor { get { return colorWithRGB(0, g: 0, b: 0)}}
     var MJ_cellTextLableColor : UIColor { get { return colorWithRGB(100, g: 100, b: 100)}}
     var MJ_cellTextDetailLabelColr : UIColor { get { return colorWithRGB(130, g: 130, b: 130)}}
     
     var MJ_buttonBackgroundColor : UIColor { get { return colorWithRGB(100, g: 100, b: 100)}}
+    var MJ_SeparatorColor : UIColor {get { return colorWithRGB(45, g: 45, b: 49)}}
     
-    var MJ_SeparatorColor : UIColor {
-        get {
-            return colorWithRGB(45, g: 45, b: 49)
-        }
-    }
+    var MJ_NodeBackgroundColor : UIColor {get {return colorWithRGB(40, g: 40, b: 40)}}
+    var MJ_LeftNodeBackgroundColor : UIColor {get {return colorWithRGB(255, g: 255, b: 255, a: 76) }}
+    var MJ_LeftNodeTintColor : UIColor {get { return colorWithRGB(0, g: 0, b: 0, a: 140) }}
+    
+    var MJ_TopUserNameColor : UIColor { get {  return colorWithRGB(125, g: 125, b: 125)}}
 }
 
 class MJColor : NSObject {

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import KVOController
+import DrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,10 +23,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.frame = UIScreen.mainScreen().bounds
         self.window?.makeKeyAndVisible()
         
-        let rootVC = MoreViewController()
+//        let rootVC = MoreViewController()
         
+        let rootVC = HomeViewController()
         
-        self.window?.rootViewController =  UINavigationController(rootViewController: rootVC)
+        let centerNav = NavigationController(rootViewController: rootVC)
+        let leftViewController = LeftViewController()
+        let rightViewController = RightViewController()
+        
+        let drawerController = DrawerController(centerViewController: centerNav, leftDrawerViewController: leftViewController, rightDrawerViewController: rightViewController)
+        
+        drawerController.maximumLeftDrawerWidth = 230
+        drawerController.maximumRightDrawerWidth = 110
+        drawerController.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
+        drawerController.closeDrawerGestureModeMask = CloseDrawerGestureMode.All
+        
+        self.window?.rootViewController = drawerController
+        MJClient.sharedInstance.drawerController = drawerController
+        MJClient.sharedInstance.centerNavigation = centerNav
+        MJClient.sharedInstance.centerViewController = rootVC
         
         return true
     }

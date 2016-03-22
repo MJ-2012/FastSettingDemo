@@ -99,7 +99,7 @@ extension  UITableView  {
         }
     }
     
-    //临时私有变量存储cells
+    //临时私有变量存储cells ［Objective-C Associated Objects 的实现原理 http://www.cocoachina.com/ios/20150629/12299.html］
     private var MJ_templateCellsByIdentifiers : [String : AnyObject]? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKey.CellsIdentifier) as? [String : AnyObject]

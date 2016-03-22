@@ -7,6 +7,8 @@
 //
 import UIKit
 
+
+
 class MoreViewController : UITableViewController {
     
     override func viewDidLoad() {
@@ -16,13 +18,14 @@ class MoreViewController : UITableViewController {
         regClass(self.tableView, cell: BaseTableViewCell.self)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Color", style: UIBarButtonItemStyle.Done, target: self, action: "changeStyle")
         
         self.KVOController.observe(MJColor.sharedInstance, keyPath: "style", options: [.Initial,.New]) {[weak self] (nav, color, change) -> Void in
             self?.view.backgroundColor = MJColor.colors.MJ_backgroundColor
             self?.tableView.reloadData()
         }
+        
+        print("ccccc : \( MJUsersKeyChain.sharedInstance.getUsersDict()["Meijie"])")
     }
     
     var rightBtn : UIBarButtonItem?{
@@ -36,6 +39,7 @@ class MoreViewController : UITableViewController {
             MJColor.sharedInstance.setStyleAndSave(MJColor.MJColorStyleDefault)
             self.rightBtn?.title = "Dark"
         }else {
+            MJUsersKeyChain.sharedInstance.addUser("Meijie", passwd: "123456", avatar: "www.avfun.tv")
             MJColor.sharedInstance.setStyleAndSave(MJColor.MJColorStyleDark)
             self.rightBtn?.title = "Bright"
         }
@@ -71,7 +75,6 @@ class MoreViewController : UITableViewController {
         }else if indexPath.row == 6 {
             cell.detailLabel?.text = "Simple List"
         }
-        
         return cell
     }
     
